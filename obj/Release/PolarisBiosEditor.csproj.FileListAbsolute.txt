@@ -1,0 +1,14 @@
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\bin\Release\PolarisBiosEditor.exe.config
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\bin\Release\PolarisBiosEditor.exe.manifest
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\bin\Release\PolarisBiosEditor.application
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\bin\Release\PolarisBiosEditor.exe
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\MainWindow.baml
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\MainWindow.g.cs
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\App.g.cs
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor_MarkupCompile.cache
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.g.resources
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.Properties.Resources.resources
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.csproj.GenerateResource.Cache
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.exe.manifest
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.application
+C:\Users\pmcca\Desktop\PBE\PolarisBiosEditor\obj\Release\PolarisBiosEditor.exe

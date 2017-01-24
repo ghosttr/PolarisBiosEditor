@@ -1,5 +1,8 @@
-# PolarisBiosEditor v1.4
-![PREVIEW](http://puu.sh/pRjD9/e085caaf23.png)
+# PolarisBiosEditor v1.4g
+![PREVIEW](http://i.imgur.com/9YBs9Vk.png)
+
+### v1.4g
+- Basic XML Export Support
 
 ### v1.4
 - Minor fixes

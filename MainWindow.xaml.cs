@@ -1001,66 +1001,6 @@ namespace PolarisBiosEditor
                 {
 
                     writer.WriteStartDocument();
-                    writer.WriteStartElement("PolarisBiosInfo");
-
-                    writer.WriteStartElement("ROM");
-                    writer.WriteElementString("VendorID", "0x" + atom_rom_header.usVendorID.ToString("X"));
-                    writer.WriteElementString("DeviceID", "0x" + atom_rom_header.usDeviceID.ToString("X"));
-                    writer.WriteElementString("SubID", "0x" + atom_rom_header.usSubsystemID.ToString("X"));
-                    writer.WriteElementString("SubVendorID", "0x" + atom_rom_header.usSubsystemVendorID.ToString("X"));
-                    writer.WriteElementString("FirmwareSignature", "0x" + atom_rom_header.uaFirmWareSignature.ToString("X"));
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("POWERPLAY");
-                    writer.WriteElementString("MaxGPUFreq", (atom_powerplay_table.ulMaxODEngineClock / 100).ToString());
-                    writer.WriteElementString("MaxMEMFreq", (atom_powerplay_table.ulMaxODMemoryClock / 100).ToString());
-                    writer.WriteElementString("PowerControlLimit", atom_powerplay_table.usPowerControlLimit.ToString());
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("POWERTUNE");
-                    writer.WriteElementString("TDP", atom_powertune_table.usTDP.ToString());
-                    writer.WriteElementString("TDC", atom_powertune_table.usTDC.ToString());
-                    writer.WriteElementString("MaxPowerLimit", atom_powertune_table.usMaximumPowerDeliveryLimit.ToString());
-                    writer.WriteElementString("MaxTemp", atom_powertune_table.usTjMax.ToString());
-                    writer.WriteElementString("ShutdownTemp", atom_powertune_table.usSoftwareShutdownTemp.ToString());
-                    writer.WriteElementString("HotspotTemp", atom_powertune_table.usTemperatureLimitHotspot.ToString());
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("FAN");
-                    writer.WriteElementString("TempHysteresis", atom_fan_table.ucTHyst.ToString());
-                    writer.WriteElementString("MinTemp", (atom_fan_table.usTMin / 100).ToString());
-                    writer.WriteElementString("MedTemp", (atom_fan_table.usTMed / 100).ToString());
-                    writer.WriteElementString("HighTemp", (atom_fan_table.usTHigh / 100).ToString());
-                    writer.WriteElementString("MaxTemp", (atom_fan_table.usTMax / 100).ToString());
-                    writer.WriteElementString("MinPWM", (atom_fan_table.usPWMMin / 100).ToString());
-                    writer.WriteElementString("MedPWM", (atom_fan_table.usPWMMed / 100).ToString());
-                    writer.WriteElementString("HighPWM", (atom_fan_table.usPWMHigh / 100).ToString());
-                    writer.WriteElementString("MaxPWM", atom_fan_table.usFanPWMMax.ToString());
-                    writer.WriteElementString("MaxRPM", atom_fan_table.usFanRPMMax.ToString());
-                    writer.WriteElementString("Sensitivity", atom_fan_table.usFanOutputSensitivity.ToString());
-                    writer.WriteElementString("AcousticLimit", (atom_fan_table.ulMinFanSCLKAcousticLimit / 100).ToString());
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("GPU");
-                    for (var i = 0; i < atom_sclk_table.ucNumEntries; i++)
-                    {
-                        writer.WriteStartElement("Clock" + i);
-                        writer.WriteElementString("MHZ", (atom_sclk_entries[i].ulSclk / 100).ToString());
-                        writer.WriteElementString("MV", atom_vddc_entries[atom_sclk_entries[i].ucVddInd].usVdd.ToString());
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
-
-
-                    writer.WriteStartElement("MEMORY");
-                    for (var i = 0; i < atom_mclk_table.ucNumEntries; i++)
-                    {
-                        writer.WriteStartElement("Clock" + i);
-                        writer.WriteElementString("MHZ", (atom_mclk_entries[i].ulMclk / 100).ToString());
-                        writer.WriteElementString("MV", atom_mclk_entries[i].usMvdd.ToString());
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
 
                     writer.WriteStartElement("VRAMTIMINGS");
                     for (var i = 0; i < atom_vram_timing_entries.Length; i++)
@@ -1072,7 +1012,6 @@ namespace PolarisBiosEditor
                     }
                     writer.WriteEndElement();
 
-                    writer.WriteEndElement();
                     writer.WriteEndDocument();
                 }
 

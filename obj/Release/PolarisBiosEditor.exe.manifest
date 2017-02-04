@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PolarisBiosEditor.exe" size="38400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PolarisBiosEditor.exe" size="36352">
       <assemblyIdentity name="PolarisBiosEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FDUaD6H+aIv8IS5OF9QtfXd3I+eDQKPLxyfJlfWHT88=</dsig:DigestValue>
+        <dsig:DigestValue>v4naNevC0G4WZAMBzMRLLevbmnl1D4IOZr6JTNwcT44=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PolarisBiosEditor.exe.config" size="182">
+  <file name="PolarisBiosEditor.exe.config" size="187">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PbQiHFOih9uz3RPvvsStiPKcsu3PE8/gyCn2QGUyyf4=</dsig:DigestValue>
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

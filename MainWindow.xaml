@@ -7,8 +7,7 @@
 
         <Button x:Name="open" Content="OPEN" Width="60" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenFileDialog_Click" />
         <Button x:Name="save" Content="SAVE" Width="60" Margin="75,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SaveFileDialog_Click" RenderTransformOrigin="1.517,0.5" />
-        <Button x:Name="export" Content="EXPORT" Width="60" Margin="140,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ExportFileDialog_Click" RenderTransformOrigin="1.517,0.5" />
-        <TextBox x:Name="txtChecksum" Text="" Margin="205,10,0,0" TextAlignment="Center" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" />
+        <TextBox x:Name="txtChecksum" Text="" Margin="140,10,0,0" TextAlignment="Center" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" />
 
         <GroupBox x:Name="boxROM" Header="ROM" Margin="10,35,0,0" FontSize="10" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" >
             <Grid>
@@ -233,6 +232,8 @@
                     </ListView>
                 </Grid>
                 <ComboBox x:Name="listVRAM" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="208" SelectionChanged="listVRAM_SelectionChanged"/>
+                <Button x:Name="export" Content="EXPORT VRAM TIMINGS TABLE" Width="208" Margin="10,143,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ExportFileDialog_Click" RenderTransformOrigin="1.517,0.5" />
+
                 <Grid Margin="10,171,10,10" Background="LightGray">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

@@ -16,7 +16,6 @@ C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\bin\Release\PolarisBiosEditor.
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\bin\Release\PolarisBiosEditor.exe.manifest
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\bin\Release\PolarisBiosEditor.application
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\bin\Release\PolarisBiosEditor.exe
-C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\PolarisBiosEditor.csprojResolveAssemblyReference.cache
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\MainWindow.baml
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\MainWindow.g.cs
 C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\App.g.cs

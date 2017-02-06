@@ -398,7 +398,7 @@ namespace PolarisBiosEditor
             boxMEM.IsEnabled = false;
             boxVRAM.IsEnabled = false;
 
-            MessageBox.Show("Modifying your BIOS is dangerous and could cause irreversible damage to your GPU.\nUsing a modified BIOS may void your warranty.\nThe author will not be held accountable for your actions.", "DISCLAIMER", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("Modifying your BIOS is dangerous and could cause irreversible damage to your GPU.\nUsing a modified BIOS may void your warranty.\nThe author will not be held accountable for your actions.", "DISCLAIMER", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void OpenFileDialog_Click(object sender, RoutedEventArgs e)
@@ -426,7 +426,7 @@ namespace PolarisBiosEditor
                 fileName = openFileDialog.SafeFileName;
                 if (fileStream.Length < 524288)
                 {
-                    MessageBox.Show("This BIOS is less than the standard 512KB size.\nFlashing this BIOS may corrupt your graphics card.", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //MessageBox.Show("This BIOS is less than the standard 512KB size.\nFlashing this BIOS may corrupt your graphics card.", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 using (BinaryReader br = new BinaryReader(fileStream))
                 {

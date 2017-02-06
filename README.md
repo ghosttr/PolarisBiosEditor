@@ -2,7 +2,7 @@
 ![PREVIEW](http://i.imgur.com/iCKSSaH.png)
 
 ## v1.4c
-- Default savefile name added.
+- Default savefile name added. Removed nag messages for testing
 
 ## v1.4b
 - Export changed to VRAM Timings Table Only, Export button moved.

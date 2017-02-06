@@ -1,7 +1,10 @@
 # PolarisBiosEditor v1.4b
 ![PREVIEW](http://i.imgur.com/iCKSSaH.png)
 
-## v 1.4b
+## v1.4c
+- Default savefile name added.
+
+## v1.4b
 - Export changed to VRAM Timings Table Only, Export button moved.
 
 ### v1.4a

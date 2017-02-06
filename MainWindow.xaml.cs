@@ -17,6 +17,8 @@ namespace PolarisBiosEditor
 {
     public partial class MainWindow : Window
     {
+        public string fileName;
+
         Byte[] buffer;
         Int32Converter int32 = new Int32Converter();
         string[] supportedDeviceID = new string[] { "67DF", "1002" };
@@ -408,6 +410,7 @@ namespace PolarisBiosEditor
 
             if (openFileDialog.ShowDialog() == true)
             {
+                
                 save.IsEnabled = false;
 
                 tableROM.Items.Clear();
@@ -420,6 +423,7 @@ namespace PolarisBiosEditor
                 tableVRAM_TIMING.Items.Clear();
 
                 System.IO.Stream fileStream = openFileDialog.OpenFile();
+                fileName = openFileDialog.SafeFileName;
                 if (fileStream.Length < 524288)
                 {
                     MessageBox.Show("This BIOS is less than the standard 512KB size.\nFlashing this BIOS may corrupt your graphics card.", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -760,6 +764,7 @@ namespace PolarisBiosEditor
         private void SaveFileDialog_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog SaveFileDialog = new SaveFileDialog();
+            SaveFileDialog.FileName = fileName;
             SaveFileDialog.Title = "Save As";
             SaveFileDialog.Filter = "BIOS (*.rom)|*.rom";
 
@@ -1005,7 +1010,7 @@ namespace PolarisBiosEditor
                     writer.WriteStartElement("VRAMTIMINGS");
                     for (var i = 0; i < atom_vram_timing_entries.Length; i++)
                     {
-                        writer.WriteStartElement("Clock" + i);
+                        writer.WriteStartElement("Clock");
                         writer.WriteElementString("MHZ", (atom_vram_timing_entries[i].ulClkRange / 100).ToString());
                         writer.WriteElementString("TIMING", ByteArrayToString(atom_vram_timing_entries[i].ucLatency));
                         writer.WriteEndElement();

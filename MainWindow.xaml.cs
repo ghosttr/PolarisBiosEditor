@@ -662,7 +662,8 @@ namespace PolarisBiosEditor
                         listVRAM.Items.Clear();
                         for (var i = 0; i < atom_vram_info.ucNumOfVRAMModule; i++)
                         {
-                            listVRAM.Items.Add(Encoding.UTF8.GetString(atom_vram_entries[i].strMemPNString));
+                            listVRAM.Items.Add(i);
+                            //listVRAM.Items.Add(Encoding.UTF8.GetString(atom_vram_entries[i].strMemPNString));
                         }
                         listVRAM.SelectedIndex = 0;
                         atom_vram_index = listVRAM.SelectedIndex;
@@ -1103,7 +1104,6 @@ namespace PolarisBiosEditor
                 var name = (FindByName("NAME", container) as TextBlock).Text;
                 var value = (FindByName("VALUE", container) as TextBox).Text;
                 var num = (int)int32.ConvertFromString(value);
-
                 if (name == "VendorID")
                 {
                     atom_vram_entries[atom_vram_index].ucMemoryVenderID = (Byte)num;
@@ -1127,8 +1127,12 @@ namespace PolarisBiosEditor
         {
             updateVRAM_entries();
             tableVRAM.Items.Clear();
+            listVRAM_String.Clear();
+            listVRAM_String.Text = Encoding.UTF8.GetString(atom_vram_entries[listVRAM.SelectedIndex].strMemPNString);
+
             if (listVRAM.SelectedIndex >= 0 && listVRAM.SelectedIndex < listVRAM.Items.Count)
             {
+                
                 atom_vram_index = listVRAM.SelectedIndex;
                 tableVRAM.Items.Add(new
                 {

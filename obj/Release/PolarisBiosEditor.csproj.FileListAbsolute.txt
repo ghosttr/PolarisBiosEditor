@@ -42,3 +42,5 @@ C:\Users\pmcca\Downloads\PolarisBiosEditor-master\PolarisBiosEditor-master\obj\R
 C:\Users\pmcca\Downloads\PolarisBiosEditor-master\PolarisBiosEditor-master\obj\Release\PolarisBiosEditor.exe.manifest
 C:\Users\pmcca\Downloads\PolarisBiosEditor-master\PolarisBiosEditor-master\obj\Release\PolarisBiosEditor.application
 C:\Users\pmcca\Downloads\PolarisBiosEditor-master\PolarisBiosEditor-master\obj\Release\PolarisBiosEditor.exe
+C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\PolarisBiosEditor.csprojResolveAssemblyReference.cache
+C:\Users\pmcca\Documents\GitHub\PolarisBiosEditor\obj\Release\PolarisBiosEditor.csproj.CoreCompileInputs.cache

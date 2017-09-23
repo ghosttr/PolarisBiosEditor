@@ -941,9 +941,9 @@ namespace PolarisBiosEditor
                 for (var i = 0; i < tableVRAM_TIMING.Items.Count; i++)
                 {
                     var container = tableVRAM_TIMING.ItemContainerGenerator.ContainerFromIndex(i) as FrameworkElement;
-                    var name = (FindByName("MHZ", container) as TextBlock).Text;
+                    var name = (int)int32.ConvertFromString(((TextBox)FindByName("MHZ", container)).Text) * 100;
                     var value = (FindByName("VALUE", container) as TextBox).Text;
-                    var mhz = (int)int32.ConvertFromString(name) * 100;
+                    var mhz = name;
                     var arr = StringToByteArray(value);
 
                     atom_vram_timing_entries[i].ulClkRange = (UInt32)mhz;

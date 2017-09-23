@@ -1,6 +1,9 @@
 # PolarisBiosEditor v1.4b
 ![PREVIEW](http://i.imgur.com/iCKSSaH.png)
 
+## v1.4d
+- Added ability to change VRAM clockspeed in timings table
+
 ## v1.4c
 - Default savefile name added. Removed nag messages for testing
 

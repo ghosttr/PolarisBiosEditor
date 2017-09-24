@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PolarisBiosEditor.exe" size="36864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PolarisBiosEditor.exe" size="36352">
       <assemblyIdentity name="PolarisBiosEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6/n9rZSyuUG5qfvQY9PVac2DZCe8O9nGckwyBShXhw8=</dsig:DigestValue>
+        <dsig:DigestValue>ILexZXzB74WaGvjevXxa+O8x4QWrAEb+mrtiLQW+1Wg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

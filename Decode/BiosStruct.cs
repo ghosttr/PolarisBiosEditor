@@ -9,8 +9,6 @@ namespace PolarisBiosEditor
 {
     public static class BiosStruct
     {
-
-
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public unsafe struct ATOM_COMMON_TABLE_HEADER
         {

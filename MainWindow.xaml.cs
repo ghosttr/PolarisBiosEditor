@@ -25,144 +25,37 @@ namespace PolarisBiosEditor
         string deviceID = "";
 
         int atom_rom_checksum_offset = 0x21;
-        int atom_rom_header_ptr = 0x48;
-        int atom_rom_header_offset;
-        ATOM_ROM_HEADER atom_rom_header;
-        ATOM_DATA_TABLES atom_data_table;
+        int ATOM_ROM_HEADER_ptr = 0x48;
+        int ATOM_ROM_HEADER_offset;
+        BiosStruct.ATOM_ROM_HEADER ATOM_ROM_HEADER;
+        BiosStruct.ATOM_DATA_TABLES atom_data_table;
 
         int atom_powerplay_offset;
-        ATOM_POWERPLAY_TABLE atom_powerplay_table;
+        BiosStruct.ATOM_POWERPLAY_TABLE atom_powerplay_table;
 
         int atom_powertune_offset;
-        ATOM_POWERTUNE_TABLE atom_powertune_table;
+        BiosStruct.ATOM_POWERTUNE_TABLE atom_powertune_table;
 
         int atom_fan_offset;
-        ATOM_FAN_TABLE atom_fan_table;
+        BiosStruct.ATOM_FAN_TABLE atom_fan_table;
 
         int atom_mclk_table_offset;
-        ATOM_MCLK_TABLE atom_mclk_table;
+        BiosStruct.ATOM_MCLK_TABLE atom_mclk_table;
         ATOM_MCLK_ENTRY[] atom_mclk_entries;
 
         int atom_sclk_table_offset;
-        ATOM_SCLK_TABLE atom_sclk_table;
+        BiosStruct.ATOM_SCLK_TABLE atom_sclk_table;
         ATOM_SCLK_ENTRY[] atom_sclk_entries;
 
         int atom_vddc_table_offset;
-        ATOM_VOLTAGE_TABLE atom_vddc_table;
+        BiosStruct.ATOM_VOLTAGE_TABLE atom_vddc_table;
         ATOM_VOLTAGE_ENTRY[] atom_vddc_entries;
 
         int atom_vram_info_offset;
-        ATOM_VRAM_INFO atom_vram_info;
+        BiosStruct.ATOM_VRAM_INFO atom_vram_info;
         ATOM_VRAM_ENTRY[] atom_vram_entries;
         ATOM_VRAM_TIMING_ENTRY[] atom_vram_timing_entries;
         int atom_vram_index = 0;
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_COMMON_TABLE_HEADER
-        {
-            Int16 usStructureSize;
-            Byte ucTableFormatRevision;
-            Byte ucTableContentRevision;
-        }
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_ROM_HEADER
-        {
-            public ATOM_COMMON_TABLE_HEADER sHeader;
-            public UInt32 uaFirmWareSignature;
-            public UInt16 usBiosRuntimeSegmentAddress;
-            public UInt16 usProtectedModeInfoOffset;
-            public UInt16 usConfigFilenameOffset;
-            public UInt16 usCRC_BlockOffset;
-            public UInt16 usBIOS_BootupMessageOffset;
-            public UInt16 usInt10Offset;
-            public UInt16 usPciBusDevInitCode;
-            public UInt16 usIoBaseAddress;
-            public UInt16 usSubsystemVendorID;
-            public UInt16 usSubsystemID;
-            public UInt16 usPCI_InfoOffset;
-            public UInt16 usMasterCommandTableOffset;
-            public UInt16 usMasterDataTableOffset;
-            public Byte ucExtendedFunctionCode;
-            public Byte ucReserved;
-            public UInt32 ulPSPDirTableOffset;
-            public UInt16 usVendorID;
-            public UInt16 usDeviceID;
-        }
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_DATA_TABLES
-        {
-            public ATOM_COMMON_TABLE_HEADER sHeader;
-            public UInt16 UtilityPipeLine;
-            public UInt16 MultimediaCapabilityInfo;
-            public UInt16 MultimediaConfigInfo;
-            public UInt16 StandardVESA_Timing;
-            public UInt16 FirmwareInfo;
-            public UInt16 PaletteData;
-            public UInt16 LCD_Info;
-            public UInt16 DIGTransmitterInfo;
-            public UInt16 SMU_Info;
-            public UInt16 SupportedDevicesInfo;
-            public UInt16 GPIO_I2C_Info;
-            public UInt16 VRAM_UsageByFirmware;
-            public UInt16 GPIO_Pin_LUT;
-            public UInt16 VESA_ToInternalModeLUT;
-            public UInt16 GFX_Info;
-            public UInt16 PowerPlayInfo;
-            public UInt16 GPUVirtualizationInfo;
-            public UInt16 SaveRestoreInfo;
-            public UInt16 PPLL_SS_Info;
-            public UInt16 OemInfo;
-            public UInt16 XTMDS_Info;
-            public UInt16 MclkSS_Info;
-            public UInt16 Object_Header;
-            public UInt16 IndirectIOAccess;
-            public UInt16 MC_InitParameter;
-            public UInt16 ASIC_VDDC_Info;
-            public UInt16 ASIC_InternalSS_Info;
-            public UInt16 TV_VideoMode;
-            public UInt16 VRAM_Info;
-            public UInt16 MemoryTrainingInfo;
-            public UInt16 IntegratedSystemInfo;
-            public UInt16 ASIC_ProfilingInfo;
-            public UInt16 VoltageObjectInfo;
-            public UInt16 PowerSourceInfo;
-            public UInt16 ServiceInfo;
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_POWERPLAY_TABLE
-        {
-            public ATOM_COMMON_TABLE_HEADER sHeader;
-            public Byte ucTableRevision;
-            public UInt16 usTableSize;
-            public UInt32 ulGoldenPPID;
-            public UInt32 ulGoldenRevision;
-            public UInt16 usFormatID;
-            public UInt16 usVoltageTime;
-            public UInt32 ulPlatformCaps;
-            public UInt32 ulMaxODEngineClock;
-            public UInt32 ulMaxODMemoryClock;
-            public UInt16 usPowerControlLimit;
-            public UInt16 usUlvVoltageOffset;
-            public UInt16 usStateArrayOffset;
-            public UInt16 usFanTableOffset;
-            public UInt16 usThermalControllerOffset;
-            public UInt16 usReserv;
-            public UInt16 usMclkDependencyTableOffset;
-            public UInt16 usSclkDependencyTableOffset;
-            public UInt16 usVddcLookupTableOffset;
-            public UInt16 usVddgfxLookupTableOffset;
-            public UInt16 usMMDependencyTableOffset;
-            public UInt16 usVCEStateTableOffset;
-            public UInt16 usPPMTableOffset;
-            public UInt16 usPowerTuneTableOffset;
-            public UInt16 usHardLimitTableOffset;
-            public UInt16 usPCIETableOffset;
-            public UInt16 usGPIOTableOffset;
-            public fixed UInt16 usReserved[6];
-        };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         unsafe struct ATOM_MCLK_ENTRY
@@ -173,14 +66,6 @@ namespace PolarisBiosEditor
             public UInt16 usMvdd;
             public UInt32 ulMclk;
             public UInt16 usReserved;
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_MCLK_TABLE
-        {
-            public Byte ucRevId;
-            public Byte ucNumEntries;
-            // public ATOM_MCLK_ENTRY entries[ucNumEntries];
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -196,90 +81,12 @@ namespace PolarisBiosEditor
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_SCLK_TABLE
-        {
-            public Byte ucRevId;
-            public Byte ucNumEntries;
-            // public ATOM_SCLK_ENTRY entries[ucNumEntries];
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         unsafe struct ATOM_VOLTAGE_ENTRY
         {
             public UInt16 usVdd;
             public UInt16 usCACLow;
             public UInt16 usCACMid;
             public UInt16 usCACHigh;
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_VOLTAGE_TABLE
-        {
-            public Byte ucRevId;
-            public Byte ucNumEntries;
-            // public ATOM_VOLTAGE_ENTRY entries[ucNumEntries];
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_FAN_TABLE
-        {
-            public Byte ucRevId;
-            public Byte ucTHyst;
-            public UInt16 usTMin;
-            public UInt16 usTMed;
-            public UInt16 usTHigh;
-            public UInt16 usPWMMin;
-            public UInt16 usPWMMed;
-            public UInt16 usPWMHigh;
-            public UInt16 usTMax;
-            public Byte ucFanControlMode;
-            public UInt16 usFanPWMMax;
-            public UInt16 usFanOutputSensitivity;
-            public UInt16 usFanRPMMax;
-            public UInt32 ulMinFanSCLKAcousticLimit;
-            public Byte ucTargetTemperature;
-            public Byte ucMinimumPWMLimit;
-            public UInt16 usFanGainEdge;
-            public UInt16 usFanGainHotspot;
-            public UInt16 usFanGainLiquid;
-            public UInt16 usFanGainVrVddc;
-            public UInt16 usFanGainVrMvdd;
-            public UInt16 usFanGainPlx;
-            public UInt16 usFanGainHbm;
-            public UInt16 usReserved;
-        };
-
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_POWERTUNE_TABLE
-        {
-            public Byte ucRevId;
-            public UInt16 usTDP;
-            public UInt16 usConfigurableTDP;
-            public UInt16 usTDC;
-            public UInt16 usBatteryPowerLimit;
-            public UInt16 usSmallPowerLimit;
-            public UInt16 usLowCACLeakage;
-            public UInt16 usHighCACLeakage;
-            public UInt16 usMaximumPowerDeliveryLimit;
-            public UInt16 usTjMax;
-            public UInt16 usPowerTuneDataSetID;
-            public UInt16 usEDCLimit;
-            public UInt16 usSoftwareShutdownTemp;
-            public UInt16 usClockStretchAmount;
-            public UInt16 usTemperatureLimitHotspot;
-            public UInt16 usTemperatureLimitLiquid1;
-            public UInt16 usTemperatureLimitLiquid2;
-            public UInt16 usTemperatureLimitVrVddc;
-            public UInt16 usTemperatureLimitVrMvdd;
-            public UInt16 usTemperatureLimitPlx;
-            public Byte ucLiquid1_I2C_address;
-            public Byte ucLiquid2_I2C_address;
-            public Byte ucLiquid_I2C_Line;
-            public Byte ucVr_I2C_address;
-            public Byte ucVr_I2C_Line;
-            public Byte ucPlx_I2C_address;
-            public Byte ucPlx_I2C_Line;
-            public UInt16 usReserved;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -322,22 +129,6 @@ namespace PolarisBiosEditor
             public Byte[] strMemPNString;
         };
 
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        unsafe struct ATOM_VRAM_INFO
-        {
-            public ATOM_COMMON_TABLE_HEADER sHeader;
-            public UInt16 usMemAdjustTblOffset;
-            public UInt16 usMemClkPatchTblOffset;
-            public UInt16 usMcAdjustPerTileTblOffset;
-            public UInt16 usMcPhyInitTableOffset;
-            public UInt16 usDramDataRemapTblOffset;
-            public UInt16 usReserved1;
-            public Byte ucNumOfVRAMModule;
-            public Byte ucMemoryClkPatchTblVer;
-            public Byte ucVramModuleVer;
-            public Byte ucMcPhyTileNum;
-            // public ATOM_VRAM_ENTRY aVramInfo[ucNumOfVRAMModule];
-        }
 
         static byte[] getBytes(object obj)
         {
@@ -432,9 +223,9 @@ namespace PolarisBiosEditor
                 {
                     buffer = br.ReadBytes((int)fileStream.Length);
 
-                    atom_rom_header_offset = getValueAtPosition(16, atom_rom_header_ptr);
-                    atom_rom_header = fromBytes<ATOM_ROM_HEADER>(buffer.Skip(atom_rom_header_offset).ToArray());
-                    deviceID = atom_rom_header.usDeviceID.ToString("X");
+                    ATOM_ROM_HEADER_offset = getValueAtPosition(16, ATOM_ROM_HEADER_ptr);
+                    ATOM_ROM_HEADER = fromBytes<BiosStruct.ATOM_ROM_HEADER>(buffer.Skip(ATOM_ROM_HEADER_offset).ToArray());
+                    deviceID = ATOM_ROM_HEADER.usDeviceID.ToString("X");
                     fixChecksum(false);
 
                     MessageBoxResult msgSuported = MessageBoxResult.Yes;
@@ -444,44 +235,44 @@ namespace PolarisBiosEditor
                     }
                     if (msgSuported == MessageBoxResult.Yes)
                     {
-                        atom_data_table = fromBytes<ATOM_DATA_TABLES>(buffer.Skip(atom_rom_header.usMasterDataTableOffset).ToArray());
+                        atom_data_table = fromBytes<BiosStruct.ATOM_DATA_TABLES>(buffer.Skip(ATOM_ROM_HEADER.usMasterDataTableOffset).ToArray());
                         atom_powerplay_offset = atom_data_table.PowerPlayInfo;
-                        atom_powerplay_table = fromBytes<ATOM_POWERPLAY_TABLE>(buffer.Skip(atom_powerplay_offset).ToArray());
+                        atom_powerplay_table = fromBytes<BiosStruct.ATOM_POWERPLAY_TABLE>(buffer.Skip(atom_powerplay_offset).ToArray());
 
                         atom_powertune_offset = atom_data_table.PowerPlayInfo + atom_powerplay_table.usPowerTuneTableOffset;
-                        atom_powertune_table = fromBytes<ATOM_POWERTUNE_TABLE>(buffer.Skip(atom_powertune_offset).ToArray());
+                        atom_powertune_table = fromBytes<BiosStruct.ATOM_POWERTUNE_TABLE>(buffer.Skip(atom_powertune_offset).ToArray());
 
                         atom_fan_offset = atom_data_table.PowerPlayInfo + atom_powerplay_table.usFanTableOffset;
-                        atom_fan_table = fromBytes<ATOM_FAN_TABLE>(buffer.Skip(atom_fan_offset).ToArray());
+                        atom_fan_table = fromBytes<BiosStruct.ATOM_FAN_TABLE>(buffer.Skip(atom_fan_offset).ToArray());
 
                         atom_mclk_table_offset = atom_data_table.PowerPlayInfo + atom_powerplay_table.usMclkDependencyTableOffset;
-                        atom_mclk_table = fromBytes<ATOM_MCLK_TABLE>(buffer.Skip(atom_mclk_table_offset).ToArray());
+                        atom_mclk_table = fromBytes<BiosStruct.ATOM_MCLK_TABLE>(buffer.Skip(atom_mclk_table_offset).ToArray());
                         atom_mclk_entries = new ATOM_MCLK_ENTRY[atom_mclk_table.ucNumEntries];
                         for (var i = 0; i < atom_mclk_entries.Length; i++)
                         {
-                            atom_mclk_entries[i] = fromBytes<ATOM_MCLK_ENTRY>(buffer.Skip(atom_mclk_table_offset + Marshal.SizeOf(typeof(ATOM_MCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_MCLK_ENTRY)) * i).ToArray());
+                            atom_mclk_entries[i] = fromBytes<ATOM_MCLK_ENTRY>(buffer.Skip(atom_mclk_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_MCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_MCLK_ENTRY)) * i).ToArray());
                         }
 
                         atom_sclk_table_offset = atom_data_table.PowerPlayInfo + atom_powerplay_table.usSclkDependencyTableOffset;
-                        atom_sclk_table = fromBytes<ATOM_SCLK_TABLE>(buffer.Skip(atom_sclk_table_offset).ToArray());
+                        atom_sclk_table = fromBytes<BiosStruct.ATOM_SCLK_TABLE>(buffer.Skip(atom_sclk_table_offset).ToArray());
                         atom_sclk_entries = new ATOM_SCLK_ENTRY[atom_sclk_table.ucNumEntries];
                         for (var i = 0; i < atom_sclk_entries.Length; i++)
                         {
-                            atom_sclk_entries[i] = fromBytes<ATOM_SCLK_ENTRY>(buffer.Skip(atom_sclk_table_offset + Marshal.SizeOf(typeof(ATOM_SCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_SCLK_ENTRY)) * i).ToArray());
+                            atom_sclk_entries[i] = fromBytes<ATOM_SCLK_ENTRY>(buffer.Skip(atom_sclk_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_SCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_SCLK_ENTRY)) * i).ToArray());
                         }
 
                         atom_vddc_table_offset = atom_data_table.PowerPlayInfo + atom_powerplay_table.usVddcLookupTableOffset;
-                        atom_vddc_table = fromBytes<ATOM_VOLTAGE_TABLE>(buffer.Skip(atom_vddc_table_offset).ToArray());
+                        atom_vddc_table = fromBytes<BiosStruct.ATOM_VOLTAGE_TABLE>(buffer.Skip(atom_vddc_table_offset).ToArray());
                         atom_vddc_entries = new ATOM_VOLTAGE_ENTRY[atom_vddc_table.ucNumEntries];
                         for (var i = 0; i < atom_vddc_table.ucNumEntries; i++)
                         {
-                            atom_vddc_entries[i] = fromBytes<ATOM_VOLTAGE_ENTRY>(buffer.Skip(atom_vddc_table_offset + Marshal.SizeOf(typeof(ATOM_VOLTAGE_TABLE)) + Marshal.SizeOf(typeof(ATOM_VOLTAGE_ENTRY)) * i).ToArray());
+                            atom_vddc_entries[i] = fromBytes<ATOM_VOLTAGE_ENTRY>(buffer.Skip(atom_vddc_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_VOLTAGE_TABLE)) + Marshal.SizeOf(typeof(ATOM_VOLTAGE_ENTRY)) * i).ToArray());
                         }
 
                         atom_vram_info_offset = atom_data_table.VRAM_Info;
-                        atom_vram_info = fromBytes<ATOM_VRAM_INFO>(buffer.Skip(atom_vram_info_offset).ToArray());
+                        atom_vram_info = fromBytes<BiosStruct.ATOM_VRAM_INFO>(buffer.Skip(atom_vram_info_offset).ToArray());
                         atom_vram_entries = new ATOM_VRAM_ENTRY[atom_vram_info.ucNumOfVRAMModule];
-                        var atom_vram_entry_offset = atom_vram_info_offset + Marshal.SizeOf(typeof(ATOM_VRAM_INFO));
+                        var atom_vram_entry_offset = atom_vram_info_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_VRAM_INFO));
                         for (var i = 0; i < atom_vram_info.ucNumOfVRAMModule; i++)
                         {
                             atom_vram_entries[i] = fromBytes<ATOM_VRAM_ENTRY>(buffer.Skip(atom_vram_entry_offset).ToArray());
@@ -505,27 +296,27 @@ namespace PolarisBiosEditor
                         tableROM.Items.Add(new
                         {
                             NAME = "VendorID",
-                            VALUE = "0x" + atom_rom_header.usVendorID.ToString("X")
+                            VALUE = "0x" + ATOM_ROM_HEADER.usVendorID.ToString("X")
                         });
                         tableROM.Items.Add(new
                         {
                             NAME = "DeviceID",
-                            VALUE = "0x" + atom_rom_header.usDeviceID.ToString("X")
+                            VALUE = "0x" + ATOM_ROM_HEADER.usDeviceID.ToString("X")
                         });
                         tableROM.Items.Add(new
                         {
                             NAME = "Sub ID",
-                            VALUE = "0x" + atom_rom_header.usSubsystemID.ToString("X")
+                            VALUE = "0x" + ATOM_ROM_HEADER.usSubsystemID.ToString("X")
                         });
                         tableROM.Items.Add(new
                         {
                             NAME = "Sub VendorID",
-                            VALUE = "0x" + atom_rom_header.usSubsystemVendorID.ToString("X")
+                            VALUE = "0x" + ATOM_ROM_HEADER.usSubsystemVendorID.ToString("X")
                         });
                         tableROM.Items.Add(new
                         {
                             NAME = "Firmware Signature",
-                            VALUE = "0x" + atom_rom_header.uaFirmWareSignature.ToString("X")
+                            VALUE = "0x" + ATOM_ROM_HEADER.uaFirmWareSignature.ToString("X")
                         });
 
                         tablePOWERPLAY.Items.Clear();
@@ -662,8 +453,7 @@ namespace PolarisBiosEditor
                         listVRAM.Items.Clear();
                         for (var i = 0; i < atom_vram_info.ucNumOfVRAMModule; i++)
                         {
-                            listVRAM.Items.Add(i);
-                            //listVRAM.Items.Add(Encoding.UTF8.GetString(atom_vram_entries[i].strMemPNString));
+                            listVRAM.Items.Add(Encoding.UTF8.GetString(atom_vram_entries[i].strMemPNString));
                         }
                         listVRAM.SelectedIndex = 0;
                         atom_vram_index = listVRAM.SelectedIndex;
@@ -783,23 +573,23 @@ namespace PolarisBiosEditor
 
                     if (name == "VendorID")
                     {
-                        atom_rom_header.usVendorID = (UInt16)num;
+                        ATOM_ROM_HEADER.usVendorID = (UInt16)num;
                     }
                     else if (name == "DeviceID")
                     {
-                        atom_rom_header.usDeviceID = (UInt16)num;
+                        ATOM_ROM_HEADER.usDeviceID = (UInt16)num;
                     }
                     else if (name == "Sub ID")
                     {
-                        atom_rom_header.usSubsystemID = (UInt16)num;
+                        ATOM_ROM_HEADER.usSubsystemID = (UInt16)num;
                     }
                     else if (name == "Sub VendorID")
                     {
-                        atom_rom_header.usSubsystemVendorID = (UInt16)num;
+                        ATOM_ROM_HEADER.usSubsystemVendorID = (UInt16)num;
                     }
                     else if (name == "Firmware Signature")
                     {
-                        atom_rom_header.uaFirmWareSignature = (UInt32)num;
+                        ATOM_ROM_HEADER.uaFirmWareSignature = (UInt32)num;
                     }
                 }
 
@@ -951,27 +741,27 @@ namespace PolarisBiosEditor
                     atom_vram_timing_entries[i].ucLatency = arr;
                 }
 
-                setBytesAtPosition(buffer, atom_rom_header_offset, getBytes(atom_rom_header));
+                setBytesAtPosition(buffer, ATOM_ROM_HEADER_offset, getBytes(ATOM_ROM_HEADER));
                 setBytesAtPosition(buffer, atom_powerplay_offset, getBytes(atom_powerplay_table));
                 setBytesAtPosition(buffer, atom_powertune_offset, getBytes(atom_powertune_table));
                 setBytesAtPosition(buffer, atom_fan_offset, getBytes(atom_fan_table));
 
                 for (var i = 0; i < atom_mclk_table.ucNumEntries; i++)
                 {
-                    setBytesAtPosition(buffer, atom_mclk_table_offset + Marshal.SizeOf(typeof(ATOM_MCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_MCLK_ENTRY)) * i, getBytes(atom_mclk_entries[i]));
+                    setBytesAtPosition(buffer, atom_mclk_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_MCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_MCLK_ENTRY)) * i, getBytes(atom_mclk_entries[i]));
                 }
 
                 for (var i = 0; i < atom_sclk_table.ucNumEntries; i++)
                 {
-                    setBytesAtPosition(buffer, atom_sclk_table_offset + Marshal.SizeOf(typeof(ATOM_SCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_SCLK_ENTRY)) * i, getBytes(atom_sclk_entries[i]));
+                    setBytesAtPosition(buffer, atom_sclk_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_SCLK_TABLE)) + Marshal.SizeOf(typeof(ATOM_SCLK_ENTRY)) * i, getBytes(atom_sclk_entries[i]));
                 }
 
                 for (var i = 0; i < atom_vddc_table.ucNumEntries; i++)
                 {
-                    setBytesAtPosition(buffer, atom_vddc_table_offset + Marshal.SizeOf(typeof(ATOM_VOLTAGE_TABLE)) + Marshal.SizeOf(typeof(ATOM_VOLTAGE_ENTRY)) * i, getBytes(atom_vddc_entries[i]));
+                    setBytesAtPosition(buffer, atom_vddc_table_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_VOLTAGE_TABLE)) + Marshal.SizeOf(typeof(ATOM_VOLTAGE_ENTRY)) * i, getBytes(atom_vddc_entries[i]));
                 }
 
-                var atom_vram_entry_offset = atom_vram_info_offset + Marshal.SizeOf(typeof(ATOM_VRAM_INFO));
+                var atom_vram_entry_offset = atom_vram_info_offset + Marshal.SizeOf(typeof(BiosStruct.ATOM_VRAM_INFO));
                 for (var i = 0; i < atom_vram_info.ucNumOfVRAMModule; i++)
                 {
                     setBytesAtPosition(buffer, atom_vram_entry_offset, getBytes(atom_vram_entries[i]));
@@ -1104,6 +894,7 @@ namespace PolarisBiosEditor
                 var name = (FindByName("NAME", container) as TextBlock).Text;
                 var value = (FindByName("VALUE", container) as TextBox).Text;
                 var num = (int)int32.ConvertFromString(value);
+
                 if (name == "VendorID")
                 {
                     atom_vram_entries[atom_vram_index].ucMemoryVenderID = (Byte)num;
@@ -1127,12 +918,8 @@ namespace PolarisBiosEditor
         {
             updateVRAM_entries();
             tableVRAM.Items.Clear();
-            listVRAM_String.Clear();
-            listVRAM_String.Text = Encoding.UTF8.GetString(atom_vram_entries[listVRAM.SelectedIndex].strMemPNString);
-
             if (listVRAM.SelectedIndex >= 0 && listVRAM.SelectedIndex < listVRAM.Items.Count)
             {
-                
                 atom_vram_index = listVRAM.SelectedIndex;
                 tableVRAM.Items.Add(new
                 {

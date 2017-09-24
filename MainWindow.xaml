@@ -33,7 +33,7 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="0"/>
-                                    <TextBox Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Center" Grid.Column="1" IsReadOnly="True"/>
+                                    <TextBox Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Center" Grid.Column="1"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -203,9 +203,6 @@
         </GroupBox>
         <GroupBox x:Name="boxVRAM" Header="VRAM" Margin="745,35,0,0" FontSize="10" Height="320" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" >
             <Grid>
-                <ComboBox x:Name="listVRAM" HorizontalAlignment="Right" Height="20" Margin="0,10,10,0" VerticalAlignment="Top" Width="20" SelectionChanged="listVRAM_SelectionChanged"/>
-                <TextBox x:Name="listVRAM_String" Text="{Binding VALUE, Mode=OneWay}" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="180" IsReadOnly="True"/>
-
                 <Grid Margin="10,35,10,169" Background="LightGray">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -227,13 +224,14 @@
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="0" />
-                                    <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Center" Grid.Column="1" IsReadOnly="True"/>
+                                    <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="0"/>
+                                    <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Center" Grid.Column="1"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+                <ComboBox x:Name="listVRAM" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="208" SelectionChanged="listVRAM_SelectionChanged"/>
                 <Button x:Name="export" Content="EXPORT VRAM TIMINGS TABLE" Width="208" Margin="10,143,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ExportFileDialog_Click" RenderTransformOrigin="1.517,0.5" />
 
                 <Grid Margin="10,171,10,10" Background="LightGray">

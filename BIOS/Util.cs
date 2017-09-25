@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PolarisBiosEditor
+namespace PolarisB
 {
     public static class Util
     {
@@ -20,7 +20,7 @@ namespace PolarisBiosEditor
             }
             return me.Member.Name;
         }
-        public static byte[] getBytes(object obj)
+        public static byte[] GetBytes(object obj)
         {
             int size = Marshal.SizeOf(obj);
             byte[] arr = new byte[size];
@@ -32,7 +32,7 @@ namespace PolarisBiosEditor
 
             return arr;
         }
-        public static T fromBytes<T>(byte[] arr)
+        public static T FromBytes<T>(byte[] arr)
         {
             T obj = default(T);
             int size = Marshal.SizeOf(obj);
@@ -44,12 +44,38 @@ namespace PolarisBiosEditor
 
             return obj;
         }
-        public static void setBytesAtPosition(byte[] dest, int ptr, byte[] src)
+        public static void SetBytesAtPosition(byte[] dest, int ptr, byte[] src)
         {
             for (var i = 0; i < src.Length; i++)
             {
                 dest[ptr + i] = src[i];
             }
+        }
+        public static Int32 GetValueAtPosition(Byte[] buffer, int bits, int position, bool isFrequency = false)
+        {
+            int value = 0;
+            if (position <= buffer.Length - 4)
+            {
+                switch (bits)
+                {
+                    case 8:
+                    default:
+                        value = buffer[position];
+                        break;
+                    case 16:
+                        value = (buffer[position + 1] << 8) | buffer[position];
+                        break;
+                    case 24:
+                        value = (buffer[position + 2] << 16) | (buffer[position + 1] << 8) | buffer[position];
+                        break;
+                    case 32:
+                        value = (buffer[position + 3] << 24) | (buffer[position + 2] << 16) | (buffer[position + 1] << 8) | buffer[position];
+                        break;
+                }
+                if (isFrequency) return value / 100;
+                return value;
+            }
+            return -1;
         }
     }
 

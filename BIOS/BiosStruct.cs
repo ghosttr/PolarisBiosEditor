@@ -5,10 +5,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PolarisBiosEditor
+namespace PolarisB
 {
     public static class BiosStruct
     {
+        public static int atom_rom_checksum_offset = 0x21;
+        public static int ATOM_ROM_HEADER_ptr = 0x48;
+
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public unsafe struct ATOM_COMMON_TABLE_HEADER
         {
